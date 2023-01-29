@@ -1,35 +1,46 @@
 variable "contact_info" {
-  type = string
+  type        = string
   description = "Contact information to be published in the bridge descriptor."
 }
 
-variable "bundle_id" {
-  type = string
-  description = "Bundle ID to use for the Lightsail instance."
-  default = "micro_2_0"
+variable "instance_type" {
+  type        = string
+  description = "EC2 instance size."
+  default     = "t3.small"
 }
 
-variable "blueprint" {
-  type = string
-  description = "Blueprint ID to use for the compute instance (must be Debian 11 based)."
-  default = "Debian 11"
+variable "ami" {
+  type        = string
+  description = "ID of an alternative AMI to use for the EC2 instance. The latest Debian 11 AMI will be used if left unset."
+  default     = null
 }
 
-variable "availability_zone" {
-  type = string
-  description = "Availability zone to deploy the instance in."
-  default = "us-east-1a"
+variable "ami_owner" {
+  type        = string
+  description = "The owner ID of the AMI. The Debian organisation's ID will be used if left unset."
+  default     = null
 }
 
-variable "ssh_key" {
-  type = string
-  description = "Public SSH key for provisioning."
+variable "ssh_private_key" {
+  type        = string
+  description = "Filename of private SSH key for provisioning."
+}
+
+variable "ssh_public_key" {
+  type        = string
+  description = "Filename of public SSH key for provisioning."
+}
+
+variable "ssh_user" {
+  type        = string
+  description = "Username to use for SSH access (must have password-less sudo enabled)."
+  default     = "admin"
 }
 
 variable "distribution_method" {
-  type = string
+  type        = string
   description = "Bridge distribution method"
-  default = "any"
+  default     = "any"
 
   validation {
     condition     = contains(["https", "moat", "email", "none", "any"], var.distribution_method)
