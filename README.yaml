@@ -1,0 +1,36 @@
+name: terraform-aws-tor-bridge
+license: "BSD2"
+gitlab_repo: sr2c/terraform-aws-tor-bridge
+related:
+- name: "terraform-null-torrc"
+  description: "Terraform module used in this module to create the torrc configuration file."
+  url: "https://gitlab.com/sr2c/terraform-null-torrc/"
+- name: "terraform-null-contactinfo"
+  description: "Terraform module that can be used to create a Tor ContactInfo-Information-Sharing-Speicifcation compliant contact info string."
+  url: "https://gitlab.com/sr2c/terraform-null-contactinfo/"
+- name: "terraform-null-label"
+  description: "Terraform module designed to generate consistent names and tags for resources. Use terraform-null-label to implement a strict naming convention."
+  url: "https://github.com/cloudposse/terraform-null-label"
+description: |-
+  Deploy obfs4 public Tor bridges to AWS EC2.
+usage: |-
+  ```hcl
+  module "bridge" {
+    source          = "sr2c/tor-bridge/aws"
+    # TODO: version = "x.x.x"
+    count           = 1 # increase for more bridges
+    namespace       = "<yourorg>"
+    name            = "bridge"
+    attributes      = [tostring(count.index)]
+    ssh_public_key  = var.ssh_public_key
+    ssh_private_key = var.ssh_private_key
+    contact_info    = "<admin email address>"
+  }
+  ```
+include:
+- "docs/targets.md"
+- "docs/terraform.md"
+contributors:
+- name: "irl"
+  gitlab: "irlxyz"
+  gitlab_id: 5895869
