@@ -28,7 +28,7 @@ module "torrc" {
 
 module "cloudinit" {
   source  = "sr2c/tor/cloudinit"
-  version = "0.1.0"
+  version = "0.1.1"
 
   torrc              = module.torrc.rendered
   install_obfs4proxy = true
