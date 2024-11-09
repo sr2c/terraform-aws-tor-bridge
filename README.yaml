@@ -28,8 +28,8 @@ usage: |-
   }
   ```
 include:
-- "docs/targets.md"
 - "docs/terraform-split.md"
+- "docs/targets.md"
 contributors:
 - name: "irl"
   gitlab: "irlxyz"
