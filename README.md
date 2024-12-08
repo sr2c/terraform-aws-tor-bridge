@@ -40,7 +40,9 @@ module "bridge" {
   ssh_private_key = var.ssh_private_key
   contact_info    = "<admin email address>"
 }
-```<!-- markdownlint-disable -->
+```
+
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
@@ -142,6 +144,8 @@ these inputs have been seperated here to make it clearer which inputs are specif
 | <a name="output_or_port"></a> [or\_port](#output\_or\_port) | The TCP port number used for the OR port. This is treated as sensitive as this information may be used to censor access to the bridge. |
 | <a name="output_ssh_user"></a> [ssh\_user](#output\_ssh\_user) | The username used for SSH access. |
 <!-- markdownlint-restore -->
+
+
 <!-- markdownlint-disable -->
 ## Makefile Targets
 ```text
@@ -154,6 +158,7 @@ Available targets:
 
 ```
 <!-- markdownlint-restore -->
+
 ## Share the Love
 
 Like this project? Please give it a ★ on
